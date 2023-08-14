@@ -51,6 +51,7 @@ public class ProductServices {
             // Aplica los cambios del updatedProduct al existingProduct
             existingProduct.setName(updatedProduct.getName());
             existingProduct.setPrice(updatedProduct.getPrice());
+            existingProduct.setImg(updatedProduct.getImg());
 
             iProduct.save(existingProduct); // Guarda los cambios
 

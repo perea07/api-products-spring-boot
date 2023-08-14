@@ -72,6 +72,7 @@ public class ProductsController {
 
             response.put("id", id);
             response.put("name", search.get().getName());
+            response.put("img", search.get().getImg());
             response.put("price", price);
             response.put("createdAt", search.get().getCreatedAt());
             

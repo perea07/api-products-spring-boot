@@ -32,6 +32,9 @@ public class Product {
     private String name;
     @Column(name = "price")
     private float price;
+    
+    @Column(name = "img")
+    private String img;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at")
