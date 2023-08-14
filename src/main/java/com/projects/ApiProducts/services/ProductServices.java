@@ -21,11 +21,12 @@ public class ProductServices {
     }
 
     public List<Product> listProducts() {
-        return iProduct.findAll();
+        return (List<Product>) iProduct.findAll();
     }
 
     public Optional<Product> listProductById(Long idProduct) {
         return iProduct.findById(idProduct);
+      
     }
 
     public boolean deleteProductById(Long id) {

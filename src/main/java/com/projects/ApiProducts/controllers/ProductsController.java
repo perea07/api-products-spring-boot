@@ -3,6 +3,7 @@ package com.projects.ApiProducts.controllers;
 import com.projects.ApiProducts.models.Product;
 import com.projects.ApiProducts.services.ProductServices;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -31,6 +32,7 @@ public class ProductsController {
     private ProductServices productServices;
 
     @GetMapping("/index")
+    @ResponseBody
     public String welcome() {
         return "Welcome to api products";
     }
@@ -55,9 +57,33 @@ public class ProductsController {
 
     @GetMapping("/list-product-by-id/{idProduct}")
     @ResponseBody
-    public Optional<Product> listProductById(@PathVariable Long idProduct) {
+    public ResponseEntity<Map<String, Object>> listProductById(@PathVariable Long idProduct) {
+        Optional<Product> search = productServices.listProductById(idProduct);
 
-        return productServices.listProductById(idProduct);
+        //Map<String, String> response = new HashMap<>();
+        Map<String, Object> response = new LinkedHashMap<>();
+        
+        HttpStatus httpStatus;
+
+        if (search.isPresent()) {
+
+            String price = Float.toString(search.get().getPrice());
+            String id = Long.toString(search.get().getId());
+
+            response.put("id", id);
+            response.put("name", search.get().getName());
+            response.put("price", price);
+            response.put("createdAt", search.get().getCreatedAt());
+            
+            httpStatus = HttpStatus.OK;
+
+        } else {
+            System.out.println("Product no found");
+            response.put("message", "Product not found");
+            httpStatus = HttpStatus.NOT_FOUND;
+        }
+
+        return new ResponseEntity<>(response, httpStatus);
 
     }
 

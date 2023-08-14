@@ -1,6 +1,5 @@
 package com.projects.ApiProducts.models;
 
-import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,9 +25,12 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
-    
+
+    @Column(name = "name")
     private String name;
+    @Column(name = "price")
     private float price;
 
     @Temporal(TemporalType.TIMESTAMP)
