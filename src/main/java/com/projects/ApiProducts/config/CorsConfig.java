@@ -10,7 +10,7 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")  // Aplica CORS a todas las rutas
-            .allowedOrigins("https://perea07.github.io/product-store/") // Cambia esto al dominio de tu frontend
+            .allowedOrigins("https://perea07.github.io/product-store/")
             .allowedMethods("GET", "POST", "PUT", "DELETE")
             .allowedHeaders("*")
             .allowCredentials(true);
