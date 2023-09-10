@@ -15,7 +15,6 @@ public class CorsConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins("https://perea07.github.io/product-store/") // Cambia esto al dominio permitido
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
-                .allowedHeaders("Authorization", "Content-Type")
                 .allowCredentials(true); // Habilita las cookies en las solicitudes cruzadas
     }
 }
