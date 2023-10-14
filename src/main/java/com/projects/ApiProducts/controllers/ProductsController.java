@@ -34,7 +34,7 @@ public class ProductsController {
     @GetMapping("/index")
     @ResponseBody
     public String welcome() {
-        return "Welcome to api products";
+        return "Welcome to api products!";
     }
 
     @PostMapping("/save-product")
